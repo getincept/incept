@@ -1,0 +1,22 @@
+#If your webserver allows to enable spell check and case check
+#CheckSpelling On
+#CheckCaseOnly On
+
+#Ask your webhoster to enable the mod_rewrite, if it is disabled
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+#if your server allows to disable indexes, most server disable them by default
+#Options All -Indexes
+
+#change this http://www.yourdomain.com/error
+ErrorDocument 401 http://localhost/incept/error
+ErrorDocument 402 http://localhost/incept/error
+ErrorDocument 403 http://localhost/incept/error
+ErrorDocument 404 http://localhost/incept/error
+ErrorDocument 405 http://localhost/incept/error
