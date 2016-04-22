@@ -7,7 +7,7 @@
  *author omgwtf
  */
 
-class Sanatize
+class Sanitize
 {
 
     public static function sanitizeInput($inputString)

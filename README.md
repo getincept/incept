@@ -1,7 +1,8 @@
 # 1 Getting Started
 
-We can [download] the Incept framework at this website on the home tab or on [github].
-Then we copy the folder to our working directory and we are ready to go. Incept is a modular framework, which means that the minimum amount of modules we need are:
+We can download the Incept framework on [github].
+Then we copy the folders to our working directory and we are ready to go. Incept is a modular
+framework, which means that the minimum amount of modules we need are:
 
     Incept
     │   index.php
@@ -1702,5 +1703,4 @@ ErrorDocument 405 http://localhost/incept/error
 [David Bainridge]: <https://plus.google.com/101305831980390329128/posts>
 [Mehul Jain]: <http://www.sitepoint.com/author/mjain/>
 [Sitepoint]: <http://www.sitepoint.com/simple-captchas-php-gd/>
-[download]: <http://www.incept.com>
-[github]: <https://github.com/rudolfsonjunior/incept>
+[github]: <https://github.com/getincept/incept>

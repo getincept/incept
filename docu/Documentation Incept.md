@@ -1,7 +1,8 @@
 # 1 Getting Started
 
-We can [download] the Incept framework at this website on the home tab or on [github].
-Then we copy the folder to our working directory and we are ready to go. Incept is a modular framework, which means that the minimum amount of modules we need are:
+We can download the Incept framework on [github].
+Then we copy the folders to our working directory and we are ready to go. Incept is a modular
+framework, which means that the minimum amount of modules we need are:
 
     Incept
     │   index.php
@@ -21,10 +22,10 @@ Then we copy the folder to our working directory and we are ready to go. Incept 
     └─── views
 
 The complete framework includes the following folder structure:
- 
+
     Incept
     │   index.php
-    │   .htaccess   
+    │   .htaccess
     └─── config
     │   └─── Database.php
     │   └─── Library.php
@@ -62,7 +63,7 @@ The complete framework includes the following folder structure:
         └─── footer.php
         └─── header.php
         └─── headerlogged.php
-    
+
 # 2 Config
 
 Inside of the config folder there are files that are needed for the configuration of the framework for our needs.
@@ -119,7 +120,7 @@ For example: "http://www.exampledomain.com/test". In this case "/test" is redire
 directory where the Starter class is instantiated which creates our controller that is called like the first part
 of the URL-Path.
 
-#### Error 
+#### Error
 
 The Error controller creates a standard view when one of the following HTTP-Statuscodes 401, 402, 403, 404, 405 return.
 
@@ -155,7 +156,7 @@ class Error extends Controller
     {
         parent::__construct();
     }
-    
+
     //this function creates our view
     //we load the create function
     //on our masterview
@@ -183,7 +184,7 @@ class Index extends Controller
     {
         parent::__construct();
     }
-    
+
     //this function creates our view
     //we load the create function
     //on our masterview
@@ -211,7 +212,7 @@ Inside of every php file we have to open and close the php-tags.
 ?>
 ```
 
-Next we need to create a new php class which has to be named exact same as the file. 
+Next we need to create a new php class which has to be named exact same as the file.
 ```php
 <?php
 class Test
@@ -250,7 +251,7 @@ class Test extends Controller
     {
         parent::__construct();
     }
-    
+
     function index()
     {
         $this->view->create("test/index",true);
@@ -286,7 +287,7 @@ gets instantiated.
 public function loadModel($name)
   {
     $model = "models/".$name."_model.php";
-    
+
     //if the file exists
     //we require the file
     //and instantiate a
@@ -303,15 +304,15 @@ public function loadModel($name)
 
 Inside of our controller "Test.php" we can create new functions to access functions on the model.
 So we create a new function "callAModelFunction" to call
-"aModelFunction". 
+"aModelFunction".
 ```php
 <?php
 class Test extends Controller
 {
     function __construct(){ ... }
-    
+
     function index(){ ... }
-    
+
     function callAModelFunction()
     {
         $this->model->aModelFunction();
@@ -347,13 +348,13 @@ The following code explains how we can use POST parameters in a function we call
 class Test extends Controller
 {
     function __construct(){ ... }
-    
+
     function index(){ ... }
-    
+
     function callAModelFunction()
     {
-        $testValue1 = $_POST["test_post_value1"]; 
-        $testValue2 = $_POST["test_post_value2"]; 
+        $testValue1 = $_POST["test_post_value1"];
+        $testValue2 = $_POST["test_post_value2"];
         $this->model->aModelFunction($testValue1,$testValue2);
     }
 }
@@ -371,7 +372,7 @@ The following code is a example of our "Test_model.php".
 class Test_model extends Model
 {
     function __construct(){ ... }
-    
+
     function aModelFunction($value1,$value2)
     {
         //do some crazy stuff with POST parameters...
@@ -396,11 +397,11 @@ The following code is our "Test.php".
 class Test extends Controller
 {
     function __construct(){ ... }
-    
+
     function index(){ ... }
-    
+
     function callAModelFunction(){ ... }
-    
+
     function getBlogPost($blogId)
     {
         $this->model->getBlogPost($blogId);
@@ -416,12 +417,12 @@ The following code is our "Test_model.php".
 class Test_model extends Model
 {
     function __construct(){ ... }
-    
+
     function aModelFunction($value1,$value2){ ... }
-    
+
     function getBlogPost($blogId)
     {
-        //Get our Blogpost from the database 
+        //Get our Blogpost from the database
         //and do crazy stuff with it
     }
 }
@@ -447,7 +448,7 @@ class Captcha
 {
 
     public static function createImage(){ ... }
-    
+
     public static function verifyCaptcha($userInput){ ... }
 
 }
@@ -465,15 +466,15 @@ The following code is a example code.
 class Test extends Controller
 {
     function __construct(){ ... }
-    
+
     function index()
     {
         Captcha::createImage();
         $this->view->create("test/index",true);
     }
-    
+
     function callAModelFunction(){ ... }
-    
+
     function getBlogPost($blogId){ ... }
 }
 ?>
@@ -485,11 +486,11 @@ Now we have to create a "image tag" on our "test/index.php" to display the creat
 
 The following code is a example code of our "test/index.php".
 ```html
-<!-- We set the source to our created captcha 
+<!-- We set the source to our created captcha
 image and set the width to 200 and height to 50 -->
 <img class="captcha" src="image.png" width="200" height="50" />
-<!-- We create a form, and have to validate 
-whether the userinput matches the captcha_string 
+<!-- We create a form, and have to validate
+whether the userinput matches the captcha_string
 We call a function on our Check controller-->
 <form action="check/checkCaptcha" method="POST">
     <input type="text" name="captcha_user_input" />
@@ -526,12 +527,12 @@ class Check extends Controller
     {
         Captcha::createImage();
     }
-    
+
     function index()
     {
-    
+
     }
-    
+
     function checkCaptcha()
     {
         if(Captcha::verifyCaptcha($_POST["captcha_user_input"]))
@@ -565,15 +566,15 @@ class Captcha
         //We load a font called "HomBoldB_16x24_LE"
         //and save it into the variable $font
         $font = imageloadfont("./public/fonts/HomBoldB_16x24_LE.gdf");
-        //we allocate a background color for our $image (in this case white) 
+        //we allocate a background color for our $image (in this case white)
         //and save it into the variable $background_color
         $background_color = imagecolorallocate($image, 255, 255, 255);
         //We create a rectangle on our $image that has the same
         //size as our image and fill it with our backgroundcolor
         imagefilledrectangle($image,0,0,200,50,$background_color);
-        //we allocate a line color for our $image lines (in this case red) 
+        //we allocate a line color for our $image lines (in this case red)
         //and save it into the variable $line_color
-        $line_color = imagecolorallocate($image, 255,0,0); 
+        $line_color = imagecolorallocate($image, 255,0,0);
         //Now we loop 15 times to create 15 lines on our $image
         //that have the same length as the image width
         // but random starting and ending points
@@ -581,7 +582,7 @@ class Captcha
         {
             imageline($image,0,rand()%50,200,rand()%50,$line_color);
         }
-        //we allocate a pixel color for our $image noise (in this case blue) 
+        //we allocate a pixel color for our $image noise (in this case blue)
         //and save it into the variable $pixel_color
         $pixel_color = imagecolorallocate($image, 0,0,255);
         //Now we loop 1800 times to create 1800 pixel on our $image
@@ -590,14 +591,14 @@ class Captcha
         {
             imagesetpixel($image,rand()%200,rand()%50,$pixel_color);
         }
-        //In this string we define the letters and numbers 
+        //In this string we define the letters and numbers
         // wich should be rendered on our $image
         //By default letters O,o,I,l, and numbers 0,1 are not inside
         //because it is difficult to read
         $letters = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
         //we save the length of the string inside of the variable $len
         $len = strlen($letters);
-        //we create an empty string for our final $word which 
+        //we create an empty string for our final $word which
         //is rendered on the image
         $word="";
         //we allocate a text color for our $image text (in this case a darkgray)
@@ -617,7 +618,7 @@ class Captcha
         //Create the $image called "image.png"
         imagepng($image, "image.png");
     }
-    
+
     //In the verifyCaptcha function we pass the $userInput
     //which should be a POST value
     public static function verifyCaptcha($userInput)
@@ -1398,7 +1399,7 @@ The following code is a example of our "Test_model.php".
 class Test_model extends Model
 {
     function __construct(){ ... }
-    
+
     function aModelFunction($value1,$value2)
     {
         //we create a variable sqlSaveTestValue
@@ -1406,10 +1407,10 @@ class Test_model extends Model
         //inside of our __construct we load
         //the parent::__construct() where we
         //load where we instantiate a new object
-        //of the Database class which extends 
+        //of the Database class which extends
         //the PDO class
-        //we make use of a prepared statement to 
-        //make sure that sql injections does not 
+        //we make use of a prepared statement to
+        //make sure that sql injections does not
         //work in our applications
         $sqlSaveTestValue = $this->db->prepare("INSERT
                                                 INTO
@@ -1425,12 +1426,12 @@ class Test_model extends Model
         // do make sure that only the HTML tags
         //that we allowed are saved into the database
         //we call our sanitizeInput function
-        //This function also makes sure that only 
+        //This function also makes sure that only
         //html attributes like "href" and "target"
         //are saved into our database
         //The last thing the sanitizeInput function
         //does is that these attributes do not
-        //take values like "javascript:", "onclick" 
+        //take values like "javascript:", "onclick"
         //and many more
         $sqlSaveTestValue->execute(array(":1"=>Sanitize::sanitizeInput($value1),
                                          ":2"=>Sanitize::sanitizeInput($value2)
@@ -1493,7 +1494,7 @@ The following code is the footer.php inside the views folder.
 ```html
   </div>
   <div id="footer">
-    by John Doe, 2016    
+    by John Doe, 2016
   </div>
 </body>
 </html>
@@ -1535,23 +1536,23 @@ but usually written lowercase. inside of this folder we create a "index.php" (ca
 Now we create a folder called "test" and inside of this folder we create a "index.php" (case 1) and a
 "differentname.php" (case 2).
 
-The following code is a excerpt of the "test/index.php" (case 1). 
+The following code is a excerpt of the "test/index.php" (case 1).
 ```html
 <h1>I am the test/index view</h1>
 ```
-The following code is a excerpt of the "test/differentname.php" (case 2). 
+The following code is a excerpt of the "test/differentname.php" (case 2).
 ```html
 <h1>I am the test/differentname view</h1>
 ```
 To render the "test/index.php" we need to call the create function on our "Test.php", our controller for this 2 views.
 
-The following code is a excerpt of the "Test.php" (case 1). 
+The following code is a excerpt of the "Test.php" (case 1).
 ```php
 <?php
 class Test extends Controller
 {
     function __construct(){ ... }
-    
+
     function index()
     {
         $this->view->create("test/index",true);
@@ -1560,13 +1561,13 @@ class Test extends Controller
 ?>
 ```
 
-The following code is a excerpt of the "Test.php" (case 2). 
+The following code is a excerpt of the "Test.php" (case 2).
 ```php
 <?php
 class Test extends Controller
 {
     function __construct(){ ... }
-    
+
     function index()
     {
         $this->view->create("test/differentname",true);
@@ -1578,13 +1579,13 @@ class Test extends Controller
 If we do not want to render the header.php and footer.php in our views folder we have to change the second parameter
 to false in the create function.
 
-The following code is a excerpt of the "Test.php" (case 2). 
+The following code is a excerpt of the "Test.php" (case 2).
 ```php
 <?php
 class Test extends Controller
 {
     function __construct(){ ... }
-    
+
     function index()
     {
         $this->view->create("test/differentname",false);
@@ -1596,13 +1597,13 @@ class Test extends Controller
 If we want to render the headerlogged.php and footer.php then we have to pass true as the second parameter and true as
 the third parameter.
 
-The following code is a excerpt of the "Test.php" (case 2). 
+The following code is a excerpt of the "Test.php" (case 2).
 ```php
 <?php
 class Test extends Controller
 {
     function __construct(){ ... }
-    
+
     function index()
     {
         $this->view->create("test/differentname",true, true);
@@ -1702,5 +1703,4 @@ ErrorDocument 405 http://localhost/incept/error
 [David Bainridge]: <https://plus.google.com/101305831980390329128/posts>
 [Mehul Jain]: <http://www.sitepoint.com/author/mjain/>
 [Sitepoint]: <http://www.sitepoint.com/simple-captchas-php-gd/>
-[download]: <http://www.incept.com>
-[github]: <https://github.com/rudolfsonjunior/incept>
+[github]: <https://github.com/getincept/incept>
