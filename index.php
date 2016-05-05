@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Incept Framework (MIT License)
+ * Version: 0.1 
+ * Author: Aichbauer Lukas
+ * Year: 2016
+ * Contact: rudolfson.junior@gmail.com
+ */
+
 //Every view is created inside of the Starter Object
 
 //Disables errormessages. just uncomment next line.
