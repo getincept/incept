@@ -1,8 +1,8 @@
-  #Incept Framework (MIT License)
-  #####Version: 0.1
-  #####Author: Aichbauer Lukas
-  #####Year: 2016
-  #####Contact: rudolfson.junior@gmail.com
+#Incept Framework (MIT License)
+#####Version: 0.1
+#####Author: Aichbauer Lukas
+#####Year: 2016
+#####Contact: rudolfson.junior@gmail.com
 
 # 1 Getting Started
 
